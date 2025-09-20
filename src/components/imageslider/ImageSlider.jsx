@@ -4,7 +4,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-// Images
+// Images array
 const images = [
   "/images/aa.jpg",
   "/images/bb.jpg",
@@ -21,23 +21,22 @@ const images = [
   "/images/m.jpg",
 ];
 
-// Custom Next Arrow
+// Custom Arrows
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg hidden sm:flex"
+    className="hidden sm:flex absolute top-1/2 right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
     onClick={onClick}
   >
-    <FaArrowRight size={20} />
+    <FaArrowRight size={24} />
   </div>
 );
 
-// Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg hidden sm:flex"
+    className="hidden sm:flex absolute top-1/2 left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
     onClick={onClick}
   >
-    <FaArrowLeft size={20} />
+    <FaArrowLeft size={24} />
   </div>
 );
 
@@ -45,32 +44,32 @@ const ImageSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 700,
-    slidesToShow: 3, // desktop default
+    speed: 600,
+    slidesToShow: 1, // Mobile: 1 slide full-screen
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 2500,
-    pauseOnHover: false,
+    autoplaySpeed: 3000,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 3, slidesToScroll: 1 } },
-      { breakpoint: 1024, settings: { slidesToShow: 2, slidesToScroll: 1 } },
-      { breakpoint: 640, settings: { slidesToShow: 1, slidesToScroll: 1 } }, // mobile
+      { breakpoint: 640, settings: { slidesToShow: 1 } }, // Mobile
+      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // Tablet
+      { breakpoint: 1280, settings: { slidesToShow: 3 } }, // Desktop
+      { breakpoint: 1536, settings: { slidesToShow: 4 } }, // Large Desktop
     ],
   };
 
   return (
-    <div className="relative w-full max-w-[1500px] mx-auto">
+    <div className="relative w-full h-screen">
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="px-1 sm:px-2">
-            <div className="w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/7]">
+          <div key={index} className="px-0 sm:px-2">
+            <div className="w-full h-screen">
               <img
                 src={img}
                 alt={`slide-${index}`}
-                className="w-full h-full object-cover rounded-xl sm:rounded-2xl md:rounded-3xl shadow-md sm:shadow-lg"
+                className="w-full h-full object-cover"
               />
             </div>
           </div>
