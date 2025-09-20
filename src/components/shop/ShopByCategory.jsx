@@ -9,20 +9,20 @@ import products from "./ShopList";
 // Custom Next Arrow
 const NextArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 right-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-800 transition-all"
     onClick={onClick}
   >
-    <FaArrowRight size={20} />
+    <FaArrowRight size={18} />
   </div>
 );
 
 // Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 left-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-800 transition-all"
     onClick={onClick}
   >
-    <FaArrowLeft size={20} />
+    <FaArrowLeft size={18} />
   </div>
 );
 
@@ -57,22 +57,21 @@ const ShopByCategory = () => {
   }, []);
 
   const settings = {
-    dots: true,
+    dots: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 1, // Mobile: 1 image full width
+    slidesToShow: 6, // Default desktop
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
-    pauseOnHover: true,
-    arrows: true,
+    pauseOnHover: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 640, settings: { slidesToShow: 1 } }, // Mobile
-      { breakpoint: 768, settings: { slidesToShow: 2 } }, // Small tablet
-      { breakpoint: 1024, settings: { slidesToShow: 3 } }, // Tablet
-      { breakpoint: 1280, settings: { slidesToShow: 4 } }, // Desktop
+      { breakpoint: 1280, settings: { slidesToShow: 4 } }, // Large desktop
+      { breakpoint: 1024, settings: { slidesToShow: 3 } }, // Desktop/Tablet
+      { breakpoint: 768, settings: { slidesToShow: 2 } },  // Small tablet
+      { breakpoint: 0, settings: { slidesToShow: 2 } },    // Mobile: 2 images
     ],
   };
 
@@ -81,12 +80,12 @@ const ShopByCategory = () => {
 
   const renderProductCard = (product) => (
     <div key={product.id} className="px-2">
-      <div className="flex flex-col items-center bg-white p-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
+      <div className="flex flex-col items-center relative bg-white p-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
         <Link to={`/product/${product.id}`} className="w-full">
           <img
             src={product.image}
             alt={product.name}
-            className="w-full h-[250px] sm:h-[300px] md:h-[350px] lg:h-[400px] object-cover rounded-xl"
+            className="w-full h-32 sm:h-32 md:h-40 lg:h-44 object-contain rounded-xl"
           />
         </Link>
         <h3 className="mt-2 text-center text-sm md:text-base font-medium line-clamp-1">
@@ -99,7 +98,7 @@ const ShopByCategory = () => {
   return (
     <div className="w-full pt-7 bg-gradient-to-b from-blue-50 to-green-50 min-h-screen">
       {/* Shop By Category */}
-      <div className="relative w-full py-5 px-4 sm:px-6 md:px-8">
+      <div className="relative bg-blue-50 w-full py-5 px-2">
         <h2 className="p-4 text-2xl md:text-3xl font-bold text-gray-700">
           Shop By Category
         </h2>
@@ -107,7 +106,7 @@ const ShopByCategory = () => {
       </div>
 
       {/* New Launches */}
-      <div className="relative w-full py-5 px-4 sm:px-6 md:px-8 mt-10">
+      <div className="relative bg-blue-50 w-full py-5 px-2 mt-10">
         <h2 className="p-4 text-2xl md:text-3xl font-bold text-gray-700">
           New Launches
         </h2>
@@ -115,7 +114,7 @@ const ShopByCategory = () => {
       </div>
 
       {/* Trending Near You */}
-      <div className="relative w-full py-5 px-4 sm:px-6 md:px-8 mt-10">
+      <div className="relative bg-blue-50 w-full py-5 px-2 mt-10">
         <h2 className="p-4 text-2xl md:text-3xl font-bold text-gray-700">
           Trending Near You
         </h2>

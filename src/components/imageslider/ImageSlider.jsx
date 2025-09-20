@@ -21,22 +21,23 @@ const images = [
   "/images/m.jpg",
 ];
 
-// Custom Arrows
+// Custom Next Arrow
 const NextArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg hidden sm:flex"
     onClick={onClick}
   >
-    <FaArrowRight size={24} />
+    <FaArrowRight size={20} />
   </div>
 );
 
+// Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg hidden sm:flex"
     onClick={onClick}
   >
-    <FaArrowLeft size={24} />
+    <FaArrowLeft size={20} />
   </div>
 );
 
@@ -44,32 +45,41 @@ const ImageSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 600,
-    slidesToShow: 1, // Mobile: 1 slide full-screen
+    speed: 700,
+    slidesToShow: 3, // Desktop default
     slidesToScroll: 1,
     autoplay: true,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 2500,
+    pauseOnHover: true,
     arrows: true,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 640, settings: { slidesToShow: 1 } }, // Mobile
-      { breakpoint: 1024, settings: { slidesToShow: 2 } }, // Tablet
-      { breakpoint: 1280, settings: { slidesToShow: 3 } }, // Desktop
-      { breakpoint: 1536, settings: { slidesToShow: 4 } }, // Large Desktop
+      {
+        breakpoint: 1280, // Large desktop
+        settings: { slidesToShow: 3, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 1024, // Tablet
+        settings: { slidesToShow: 2, slidesToScroll: 1 },
+      },
+      {
+        breakpoint: 640, // Mobile
+        settings: { slidesToShow: 1, slidesToScroll: 1 },
+      },
     ],
   };
 
   return (
-    <div className="relative w-full h-screen">
+    <div className="relative w-full max-w-[1500px] mx-auto px-2 sm:px-4 md:px-6">
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="px-0 sm:px-2">
-            <div className="w-full h-screen">
+          <div key={index} className="px-1 sm:px-2">
+            <div className="w-full aspect-[16/9] sm:aspect-[4/3] md:aspect-[16/7]">
               <img
                 src={img}
                 alt={`slide-${index}`}
-                className="w-full h-full object-cover"
+                className="w-full h-full object-cover rounded-xl sm:rounded-2xl md:rounded-3xl shadow-md sm:shadow-lg"
               />
             </div>
           </div>
