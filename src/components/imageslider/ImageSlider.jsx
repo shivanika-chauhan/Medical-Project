@@ -13,27 +13,20 @@ const images = [
   "/images/c.jpg",
   "/images/d.jpg",
   "/images/f.jpg",
-  "/images/i.jpg",
-  "/images/j.jpg",
-  "/images/k.jpg",
-  "/images/l.jpg",
-  "/images/m.jpg",
 ];
 
-// Custom Next Arrow
 const NextArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700"
+    className="hidden sm:flex absolute top-1/2 right-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700"
     onClick={onClick}
   >
     <FaArrowRight size={20} />
   </div>
 );
 
-// Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
-    className="hidden sm:flex absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700"
+    className="hidden sm:flex absolute top-1/2 left-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700"
     onClick={onClick}
   >
     <FaArrowLeft size={20} />
@@ -41,35 +34,32 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const ImageSlider = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 700,
-    slidesToShow: 3, // Desktop default
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 2500,
-    arrows: true,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    // Responsive breakpoints adjusted for real devices
-    responsive: [
-      {
-        breakpoint: 1024, // Tablet
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
+ const settings = {
+  dots: false,
+  infinite: true,
+  speed: 600,
+  slidesToShow: 3, // default for laptop/desktop
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 3000,
+  pauseOnHover: false,
+  nextArrow: <NextArrow />,
+  prevArrow: <PrevArrow />,
+  responsive: [
+    {
+      breakpoint: 1024, // below 1024px width
+      settings: {
+        slidesToShow: 3,
       },
-      {
-        breakpoint: 768, // Mobile
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
+    },
+    {
+      breakpoint: 768, // below 768px (tablet and mobile)
+      settings: {
+        slidesToShow: 1,
       },
-    ],
-  };
+    },
+  ],
+};
 
   return (
     <div className="relative w-full max-w-[1500px] mx-auto px-2 sm:px-4 md:px-6">
