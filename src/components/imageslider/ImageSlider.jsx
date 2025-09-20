@@ -24,20 +24,20 @@ const images = [
 // Custom Next Arrow
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 right-2 sm:right-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg"
     onClick={onClick}
   >
-    <FaArrowRight size={24} />
+    <FaArrowRight size={18} className="sm:size-24" />
   </div>
 );
 
 // Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute top-1/2 left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-lg"
+    className="absolute top-1/2 left-2 sm:left-4 -translate-y-1/2 bg-blue-600 text-white p-2 sm:p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-md sm:shadow-lg"
     onClick={onClick}
   >
-    <FaArrowLeft size={24} />
+    <FaArrowLeft size={18} className="sm:size-24" />
   </div>
 );
 
@@ -45,7 +45,7 @@ const ImageSlider = () => {
   const settings = {
     dots: true,
     infinite: true,
-    speed: 800,
+    speed: 700,
     slidesToShow: 2,
     slidesToScroll: 2,
     autoplay: true,
@@ -63,14 +63,14 @@ const ImageSlider = () => {
   };
 
   return (
-    <div className="relative w-full max-w-[1500px] mx-auto h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
+    <div className="relative w-full max-w-[1500px] mx-auto h-[220px] sm:h-[300px] md:h-[400px] lg:h-[480px]">
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="px-2">
+          <div key={index} className="px-1 sm:px-2">
             <img
               src={img}
               alt={`slide-${index}`}
-              className="w-full h-full object-cover rounded-3xl shadow-lg"
+              className="w-full h-full object-cover rounded-xl sm:rounded-2xl md:rounded-3xl shadow-md sm:shadow-lg"
             />
           </div>
         ))}
