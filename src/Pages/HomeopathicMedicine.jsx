@@ -8,7 +8,7 @@ const HomeopathicMedicine = () => {
 
   // Filter only Homeopathic category (case-insensitive)
   const homeopathicItems = products.filter(
-    (p) => p.category.toLowerCase() === "homeopethic"
+    (p) => p.category.toLowerCase() ===  "homeopethic"
   );
 
   const [showAll, setShowAll] = useState(false);
@@ -18,14 +18,13 @@ const HomeopathicMedicine = () => {
     <div className="w-full bg-gradient-to-b from-blue-50 to-green-50 min-h-screen">
       {/* Hero Section */}
       <section className="w-full text-center py-12 bg-gradient-to-r from-blue-600 to-green-500 text-white shadow-md">
-        <h1 className="text-4xl font-bold mb-3">Homeopathic Medicines</h1>
-        <p className="text-lg max-w-2xl mx-auto px-4">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-3">Homeopathic Medicines</h1>
+        <p className="text-base sm:text-lg max-w-2xl mx-auto px-4">
           Explore natural and holistic remedies for various health conditions,
           trusted by practitioners for safe and effective healing.
         </p>
       </section>
 
-     
       {/* Medicines Grid */}
       <section className="px-4 sm:px-6 lg:px-8 py-8">
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 sm:gap-6">
@@ -40,7 +39,7 @@ const HomeopathicMedicine = () => {
                 className="h-28 w-auto mb-3 object-contain"
                 loading="lazy"
               />
-              <h2 className="text-sm m-2 sm:text-base font-semibold text-gray-700 line-clamp-2">
+              <h2 className="text-sm sm:text-base font-semibold text-gray-700 line-clamp-2">
                 {item.name}
               </h2>
               <div className="flex justify-between gap-7 border-t-2 p-2 border-gray-300 w-full">
@@ -70,10 +69,11 @@ const HomeopathicMedicine = () => {
           </div>
         )}
       </section>
-       {/* About Homeopathic Medicines */}
+
+      {/* About Homeopathic Medicines */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         <div className="bg-white shadow-lg rounded-xl p-6 md:p-8">
-          <h2 className="text-2xl font-bold text-blue-600 mb-4 text-center">
+          <h2 className="text-2xl sm:text-3xl font-bold text-blue-600 mb-4 text-center">
             About Homeopathic Medicines
           </h2>
           <p className="text-gray-700 leading-relaxed mb-4">
@@ -95,7 +95,6 @@ const HomeopathicMedicine = () => {
           </p>
         </div>
       </section>
-
 
       {/* Footer */}
       <Footer />

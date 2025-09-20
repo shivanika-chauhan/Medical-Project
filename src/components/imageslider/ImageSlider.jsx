@@ -1,6 +1,6 @@
 import React from "react";
 import Slider from "react-slick";
-import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
@@ -14,13 +14,14 @@ const images = [
   "/images/c.jpg",
   "/images/d.jpg",
   "/images/f.jpg",
-    "/images/i.jpg",
+  "/images/i.jpg",
   "/images/j.jpg",
   "/images/k.jpg",
   "/images/l.jpg",
   "/images/m.jpg",
 ];
 
+// Custom Next Arrow
 const NextArrow = ({ onClick }) => (
   <div
     className="absolute top-1/2 right-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-lg"
@@ -30,6 +31,7 @@ const NextArrow = ({ onClick }) => (
   </div>
 );
 
+// Custom Prev Arrow
 const PrevArrow = ({ onClick }) => (
   <div
     className="absolute top-1/2 left-4 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-10 hover:bg-blue-700 shadow-lg"
@@ -64,7 +66,7 @@ const ImageSlider = () => {
     <div className="relative w-full max-w-[1500px] mx-auto h-[350px] sm:h-[400px] md:h-[450px] lg:h-[500px]">
       <Slider {...settings}>
         {images.map((img, index) => (
-          <div key={index} className="px-2"> {/* 👈 Gap between slides */}
+          <div key={index} className="px-2">
             <img
               src={img}
               alt={`slide-${index}`}

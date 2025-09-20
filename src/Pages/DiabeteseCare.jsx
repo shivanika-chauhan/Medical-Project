@@ -6,9 +6,9 @@ import Footer from "../components/footer/Footer";
 const DiabetesCare = () => {
   const { addToCart } = useContext(CartContext);
 
-  // Filter only Diabetes category (corrected: "Diabites")
+  // Filter products by "Diabetes" category
   const diabetesItems = products.filter(
-    (p) => p.category.toLowerCase() === "diabites"
+    (p) => p.category.toLowerCase() === "diabetes"
   );
 
   const [showAll, setShowAll] = useState(false);
@@ -49,7 +49,7 @@ const DiabetesCare = () => {
                   onClick={() => addToCart(item)}
                   className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition shadow-md"
                 >
-                  Add to Cart
+                  Add
                 </button>
               </div>
             </div>

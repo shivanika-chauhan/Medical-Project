@@ -1,14 +1,11 @@
-// ShopByCategory.jsx
-import React, { useEffect, useState, useContext } from "react";
+import React, { useEffect, useState } from "react";
 import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { Link } from "react-router-dom";
-import products from "./ShopList"; // Correct path
-import { CartContext } from "../../context/CartContext"; // Correct path to context
+import products from "./ShopList";
 
-// Custom Next Button
 const NextArrow = ({ onClick }) => (
   <div
     className="absolute top-1/2 right-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-800 transition-all"
@@ -18,7 +15,6 @@ const NextArrow = ({ onClick }) => (
   </div>
 );
 
-// Custom Prev Button
 const PrevArrow = ({ onClick }) => (
   <div
     className="absolute top-1/2 left-2 -translate-y-1/2 bg-blue-600 text-white p-3 rounded-full cursor-pointer z-20 hover:bg-blue-800 transition-all"
@@ -29,8 +25,6 @@ const PrevArrow = ({ onClick }) => (
 );
 
 const ShopByCategory = () => {
-  const { addToCart } = useContext(CartContext);
-
   const [shopProducts, setShopProducts] = useState([]);
   const [newLaunches, setNewLaunches] = useState([]);
   const [trendingProducts, setTrendingProducts] = useState([]);
@@ -42,7 +36,6 @@ const ShopByCategory = () => {
         const response = await new Promise((resolve) => {
           setTimeout(() => resolve({ data: products }), 500);
         });
-
         setShopProducts(response.data.filter((p) => p.category === "ShopByCategory"));
         setNewLaunches(response.data.filter((p) => p.category === "NewLaunches"));
         setTrendingProducts(response.data.filter((p) => p.category === "Trending"));
@@ -67,10 +60,30 @@ const ShopByCategory = () => {
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
     responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 4 } },
-      { breakpoint: 1024, settings: { slidesToShow: 3 } },
-      { breakpoint: 768, settings: { slidesToShow: 2 } },
-      { breakpoint: 480, settings: { slidesToShow: 1 } },
+      {
+        breakpoint: 1280,
+        settings: {
+          slidesToShow: 4,
+        },
+      },
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+        },
+      },
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 2,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
     ],
   };
 
@@ -89,17 +102,6 @@ const ShopByCategory = () => {
         <h3 className="m-2 text-center text-sm md:text-base font-medium line-clamp-1">
           {product.name}
         </h3>
-        <div className="flex justify-between gap-7 border-t-2 p-2 border-gray-500">
-          <p className="text-green-600 text-sm md:text-base font-medium mt-1">
-            ₹{product.price.toLocaleString("en-IN")}
-          </p>
-          <button
-            onClick={() => addToCart(product)}
-            className="mt-2 px-3 py-1 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition shadow-md"
-          >
-            Add to Cart
-          </button>
-        </div>
       </div>
     </div>
   );

@@ -20,7 +20,7 @@ const PersonalCare = () => {
       <section className="w-full text-center py-12 bg-gradient-to-r from-blue-600 to-green-500 text-white shadow-md">
         <h1 className="text-4xl font-bold mb-3">Personal Care</h1>
         <p className="text-lg max-w-2xl mx-auto px-4">
-          Discover trusted personal care products to keep your skin, hair, and body healthy, 
+          Discover trusted personal care products to keep your skin, hair, and body healthy,
           fresh, and glowing every day.
         </p>
       </section>
@@ -50,7 +50,7 @@ const PersonalCare = () => {
                   onClick={() => addToCart(item)}
                   className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition shadow-md"
                 >
-                  Add to Cart
+                  Add
                 </button>
               </div>
             </div>

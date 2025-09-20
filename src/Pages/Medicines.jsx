@@ -35,10 +35,13 @@ const Medicines = () => {
           <span className="text-green-200">Collection</span>
         </h1>
         <p className="text-lg max-w-3xl mx-auto px-4 mb-6">
-          Browse our comprehensive range of medicines and health supplements carefully curated to support your wellness and daily healthcare needs.
+          Browse our comprehensive range of medicines and health supplements
+          carefully curated to support your wellness and daily healthcare needs.
         </p>
         <p className="text-md max-w-3xl mx-auto px-4">
-          From essential over-the-counter products to specialized prescriptions, our selection ensures quality, reliability, and effectiveness. Take control of your health with trusted products for every condition.
+          From essential over-the-counter products to specialized prescriptions,
+          our selection ensures quality, reliability, and effectiveness. Take
+          control of your health with trusted products for every condition.
         </p>
       </section>
 
@@ -89,7 +92,7 @@ const Medicines = () => {
                             onClick={() => addToCart(item)}
                             className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition shadow-md"
                           >
-                            Add to Cart
+                            Add
                           </button>
                         </div>
                       </div>
@@ -122,19 +125,22 @@ const Medicines = () => {
           <div className="p-4 border rounded-lg hover:shadow-md transition">
             <h3 className="text-xl font-semibold mb-2">Quality Assurance</h3>
             <p className="text-gray-700">
-              All products are sourced from certified manufacturers ensuring purity and efficacy.
+              All products are sourced from certified manufacturers ensuring
+              purity and efficacy.
             </p>
           </div>
           <div className="p-4 border rounded-lg hover:shadow-md transition">
             <h3 className="text-xl font-semibold mb-2">Wide Selection</h3>
             <p className="text-gray-700">
-              Find medicines for various health conditions, from common ailments to specialized needs.
+              Find medicines for various health conditions, from common
+              ailments to specialized needs.
             </p>
           </div>
           <div className="p-4 border rounded-lg hover:shadow-md transition">
             <h3 className="text-xl font-semibold mb-2">Trusted Brands</h3>
             <p className="text-gray-700">
-              We feature reputable brands trusted by healthcare professionals and customers alike.
+              We feature reputable brands trusted by healthcare professionals
+              and customers alike.
             </p>
           </div>
         </div>
