@@ -31,8 +31,10 @@ const ShopByCategory = () => {
   const [newLaunches, setNewLaunches] = useState([]);
   const [trendingProducts, setTrendingProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [slidesToShow, setSlidesToShow] = useState(6); // default desktop
 
   useEffect(() => {
+    // Fetch products
     const fetchProducts = async () => {
       try {
         const response = await new Promise((resolve) => {
@@ -56,23 +58,33 @@ const ShopByCategory = () => {
     fetchProducts();
   }, []);
 
+  useEffect(() => {
+    // Update slidesToShow based on screen width
+    const updateSlides = () => {
+      const width = window.innerWidth;
+      if (width <= 640) setSlidesToShow(1);        // Mobile
+      else if (width <= 768) setSlidesToShow(2);   // Small tablet
+      else if (width <= 1024) setSlidesToShow(3);  // Tablet
+      else if (width <= 1280) setSlidesToShow(4);  // Laptop
+      else setSlidesToShow(6);                     // Desktop
+    };
+
+    updateSlides();
+    window.addEventListener("resize", updateSlides);
+    return () => window.removeEventListener("resize", updateSlides);
+  }, []);
+
   const settings = {
     dots: false,
     infinite: true,
     speed: 600,
-    slidesToShow: 6, // Default desktop
+    slidesToShow,
     slidesToScroll: 1,
     autoplay: true,
     autoplaySpeed: 3000,
     pauseOnHover: false,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    responsive: [
-      { breakpoint: 1280, settings: { slidesToShow: 4 } }, // Large desktop
-      { breakpoint: 1024, settings: { slidesToShow: 3 } }, // Desktop/Tablet
-      { breakpoint: 768, settings: { slidesToShow: 2 } },  // Small tablet
-      { breakpoint: 0, settings: { slidesToShow: 2 } },    // Mobile: 2 images
-    ],
   };
 
   if (loading)
