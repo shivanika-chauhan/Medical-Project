@@ -6,9 +6,9 @@ import Footer from "../components/footer/Footer";
 const DiabetesCare = () => {
   const { addToCart } = useContext(CartContext);
 
-  // Filter products by "Diabetes" category
+  // Filter only Diabetes category
   const diabetesItems = products.filter(
-    (p) => p.category.toLowerCase() === "diabetes"
+    (p) => p.category.toLowerCase() === "diabites"
   );
 
   const [showAll, setShowAll] = useState(false);
@@ -18,8 +18,8 @@ const DiabetesCare = () => {
     <div className="w-full bg-gradient-to-b from-blue-50 to-green-50 min-h-screen">
       {/* Hero Section */}
       <section className="w-full text-center py-12 bg-gradient-to-r from-blue-600 to-green-500 text-white shadow-md">
-        <h1 className="text-4xl font-bold mb-3">Diabetes Care</h1>
-        <p className="text-lg max-w-2xl mx-auto px-4">
+        <h1 className="text-3xl sm:text-4xl font-bold mb-3">Diabetes Care</h1>
+        <p className="text-base sm:text-lg max-w-2xl mx-auto px-4">
           Explore trusted diabetes care products to help manage blood sugar and maintain a healthy lifestyle.
         </p>
       </section>
@@ -49,7 +49,7 @@ const DiabetesCare = () => {
                   onClick={() => addToCart(item)}
                   className="px-4 py-2 bg-blue-600 text-white text-sm rounded-lg hover:bg-blue-700 transition shadow-md"
                 >
-                  Add
+                  Add 
                 </button>
               </div>
             </div>
@@ -94,3 +94,8 @@ const DiabetesCare = () => {
 };
 
 export default DiabetesCare;
+
+
+
+
+

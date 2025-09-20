@@ -81,7 +81,7 @@ const ShopByCategory = () => {
       {
         breakpoint: 480,
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
         },
       },
     ],
@@ -90,7 +90,7 @@ const ShopByCategory = () => {
   if (loading) return <p className="text-center py-10">Loading products...</p>;
 
   const renderProductCard = (product) => (
-    <div key={product.id} className="px-2 ">
+    <div key={product.id} className="px-2">
       <div className="flex flex-col items-center relative bg-white p-3 rounded-xl shadow-md hover:shadow-lg hover:scale-105 transition-transform duration-300 cursor-pointer">
         <Link to={`/product/${product.id}`} className="w-full">
           <img
